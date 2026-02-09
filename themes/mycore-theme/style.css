@@ -1,0 +1,221 @@
+/*
+Theme Name: MyCore Theme
+Theme URI: https://github.com/your-org/CorePress
+Author: Your Name
+Author URI: https://yoursite.com
+Description: Starter theme cho CorePress - nền tảng tái sử dụng cho nhiều dự án WordPress.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mycore-theme
+Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-styles, wide-blocks
+*/
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.site {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 1rem 1.5rem;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.site-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.main-navigation a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-navigation a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background: #1a1a1a;
+  color: #ccc;
+  padding: 2rem 1.5rem;
+  margin-top: auto;
+}
+
+.site-footer .site-info {
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Posts & Pages
+   ========================================================================== */
+
+.entry-header {
+  margin-bottom: 1rem;
+}
+
+.entry-title {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.entry-meta {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.entry-content {
+  margin-bottom: 2rem;
+}
+
+.entry-content p {
+  margin: 0 0 1rem;
+}
+
+/* ==========================================================================
+   Sidebar & Widgets
+   ========================================================================== */
+
+.widget-area {
+  margin-top: 2rem;
+}
+
+.widget {
+  margin-bottom: 2rem;
+}
+
+.widget-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+}
+
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.widget li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.widget li:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .content-sidebar-wrap {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .site-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .widget-area {
+    width: 300px;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+}

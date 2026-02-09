@@ -1,0 +1,61 @@
+# WordPress (local setup)
+wordpress/
+wordpress-latest.zip
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/mu-plugins/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
+
+# Ignore root WordPress core (if you keep WP in repo, remove these)
+# /wp-admin/
+# /wp-includes/
+# /wp-*.php
+# /xmlrpc.php
+# /readme.html
+# /license.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs & env
+*.log
+.env
+.env.local
+.env.*.local
+# Note: .env.example được commit, .env thì không
+
+# Composer
+/vendor/
+composer.lock
+
+# NPM
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build
+*.map
+/dist/
+/build/
+
+# Temporary
+*.tmp
+*.temp
+*.swp
+*~

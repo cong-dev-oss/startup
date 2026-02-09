@@ -1,0 +1,21 @@
+/*
+Theme Name: Startup Theme
+Theme URI: https://example.com
+Author: Your Name
+Author URI: https://example.com
+Description: Startup Website Template converted to WordPress theme
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: startup-theme
+Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* Import Bootstrap */
+@import url('assets/css/bootstrap.min.css');
+
+/* Import Template Styles */
+@import url('assets/css/style.css');
