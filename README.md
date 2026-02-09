@@ -80,7 +80,7 @@ Chỉ cần chỉnh sửa file trong thư mục `docs/` và push lên GitHub:
 ```powershell
 git add docs/
 git commit -m "Update demo"
-git push origin main
+git push origin master
 ```
 
 ---
