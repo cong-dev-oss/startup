@@ -1,10 +1,18 @@
-# CorePress
+# Startup Theme - WordPress Theme
 
-Starter theme + plugin core cho WordPress.
+WordPress theme được chuyển đổi từ HTML template Startup.
 
 ---
 
-## Cài đặt & Chạy
+## 🚀 Demo trên GitHub Pages
+
+**Xem demo:** https://cong-dev-oss.github.io/startup/
+
+Demo được tự động deploy từ thư mục `docs/` lên GitHub Pages.
+
+---
+
+## 📦 Cài đặt & Chạy WordPress
 
 **Yêu cầu:** PHP 7.4+, Docker (cho MySQL).
 
@@ -46,20 +54,48 @@ Mở trình duyệt: **http://localhost:8080** → làm theo wizard WordPress (c
 ### Bước 6: Kích hoạt Theme & Plugin
 
 Sau khi vào Admin:
-- **Giao diện → Giao diện**: bật **MyCore Theme**
+- **Giao diện → Giao diện**: bật **Startup Theme**
 - **Cài đặt → Plugin**: bật **MyCore Plugin**
 
 ---
 
-## Kiểm tra Database
+## 🌐 GitHub Pages Setup
+
+### Cách hoạt động:
+
+1. **Tự động deploy:** Khi push code lên GitHub, GitHub Actions sẽ tự động build và deploy lên GitHub Pages
+2. **Static HTML:** File trong thư mục `docs/` sẽ được deploy
+3. **URL:** https://cong-dev-oss.github.io/startup/
+
+### Cấu hình GitHub Pages:
+
+1. Vào **Settings** → **Pages** trong repository
+2. Chọn **Source:** `GitHub Actions` (đã được cấu hình sẵn)
+3. Workflow sẽ tự động chạy khi push code
+
+### Cập nhật demo:
+
+Chỉ cần chỉnh sửa file trong thư mục `docs/` và push lên GitHub:
 
 ```powershell
-docker exec corepress-mysql mysql -u corepress -proot -e "SHOW DATABASES;"
+git add docs/
+git commit -m "Update demo"
+git push origin main
 ```
 
 ---
 
-## Xử lý lỗi
+## 📁 Cấu trúc
+
+- `themes/startup-theme/` – WordPress theme (templates, assets, functions)
+- `themes/mycore-theme/` – Starter theme
+- `plugins/mycore-plugin/` – Core plugin
+- `docs/` – Static HTML demo cho GitHub Pages
+- `.github/workflows/` – GitHub Actions workflow để deploy
+
+---
+
+## 🔧 Xử lý lỗi
 
 **Lỗi 500 khi mở http://localhost:8080:**
 - Nếu gặp lỗi "missing MySQL extension", chạy `.\enable-mysqli.ps1` để bật mysqli extension trong PHP
@@ -67,9 +103,6 @@ docker exec corepress-mysql mysql -u corepress -proot -e "SHOW DATABASES;"
 
 ---
 
-## Cấu trúc
+## 📝 License
 
-- `themes/mycore-theme/` – Starter theme (templates, assets, menu, widget)
-- `plugins/mycore-plugin/` – CPT (product, portfolio, event), taxonomies, custom fields, SEO meta, security, performance, REST API, user roles
-
-Sau khi chạy `setup.ps1`, WordPress nằm trong `wordpress/`; theme và plugin đã được copy vào `wordpress/wp-content/`.
+GNU General Public License v2 or later

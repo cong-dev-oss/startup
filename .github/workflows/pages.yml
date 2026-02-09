@@ -1,0 +1,72 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build static site
+        run: |
+          mkdir -p _site
+          # Copy theme assets to _site
+          cp -r themes/startup-theme/assets _site/assets
+          # Copy docs folder if exists
+          if [ -d "docs" ]; then
+            cp -r docs/* _site/
+            # Fix asset paths in HTML files
+            find _site -name "*.html" -type f -exec sed -i 's|../themes/startup-theme/assets/|assets/|g' {} \;
+          else
+            # Create a simple index.html from theme
+            echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Theme Demo</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid py-5">
+        <div class="container text-center">
+            <h1>Startup Theme Demo</h1>
+            <p>This is a static demo of the Startup WordPress theme.</p>
+            <p>To see the full WordPress theme, please install WordPress locally.</p>
+        </div>
+    </div>
+</body>
+</html>' > _site/index.html
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
