@@ -37,12 +37,15 @@ jobs:
         run: |
           mkdir -p _site
           # Copy theme assets to _site
-          cp -r themes/startup-theme/assets _site/assets
+          if [ -d "themes/startup-theme/assets" ]; then
+            cp -r themes/startup-theme/assets _site/assets
+          fi
           # Copy docs folder if exists
-          if [ -d "docs" ]; then
+          if [ -d "docs" ] && [ -f "docs/index.html" ]; then
             cp -r docs/* _site/
-            # Fix asset paths in HTML files
+            # Fix asset paths in HTML files (if needed)
             find _site -name "*.html" -type f -exec sed -i 's|../themes/startup-theme/assets/|assets/|g' {} \;
+            echo "Copied docs/index.html to _site/"
           else
             # Create a simple index.html from theme
             echo '<!DOCTYPE html>
@@ -64,7 +67,13 @@ jobs:
     </div>
 </body>
 </html>' > _site/index.html
+            echo "Created default index.html"
           fi
+          # List files in _site to debug
+          echo "Files in _site:"
+          ls -la _site/
+          echo "Checking for index.html:"
+          ls -la _site/index.html || echo "index.html not found!"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
