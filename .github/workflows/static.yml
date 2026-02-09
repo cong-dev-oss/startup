@@ -48,7 +48,8 @@ jobs:
             echo "Copied docs/index.html to _site/"
           else
             # Create a simple index.html from theme
-            echo '<!DOCTYPE html>
+            cat << 'EOF' > _site/index.html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,7 +67,8 @@ jobs:
         </div>
     </div>
 </body>
-</html>' > _site/index.html
+</html>
+EOF
             echo "Created default index.html"
           fi
           # List files in _site to debug
