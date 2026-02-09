@@ -39,43 +39,25 @@ jobs:
           # Copy theme assets to _site
           if [ -d "themes/startup-theme/assets" ]; then
             cp -r themes/startup-theme/assets _site/assets
+            echo "Copied theme assets"
           fi
-          # Copy docs folder if exists
+          # Copy docs folder (must exist with index.html)
           if [ -d "docs" ] && [ -f "docs/index.html" ]; then
             cp -r docs/* _site/
             # Fix asset paths in HTML files (if needed)
             find _site -name "*.html" -type f -exec sed -i 's|../themes/startup-theme/assets/|assets/|g' {} \;
             echo "Copied docs/index.html to _site/"
           else
-            # Create a simple index.html from theme
-            cat << 'EOF' > _site/index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startup Theme Demo</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container-fluid py-5">
-        <div class="container text-center">
-            <h1>Startup Theme Demo</h1>
-            <p>This is a static demo of the Startup WordPress theme.</p>
-            <p>To see the full WordPress theme, please install WordPress locally.</p>
-        </div>
-    </div>
-</body>
-</html>
-EOF
-            echo "Created default index.html"
+            echo "ERROR: docs/index.html not found!"
+            exit 1
           fi
-          # List files in _site to debug
-          echo "Files in _site:"
+          # Verify index.html exists
+          if [ ! -f "_site/index.html" ]; then
+            echo "ERROR: index.html not found in _site/"
+            exit 1
+          fi
+          echo "Build completed successfully"
           ls -la _site/
-          echo "Checking for index.html:"
-          ls -la _site/index.html || echo "index.html not found!"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
