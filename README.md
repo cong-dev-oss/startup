@@ -75,7 +75,7 @@ Sau khi vào Admin:
 
 ### Cập nhật demo:
 
-Chỉ cần chỉnh sửa file trong thư mục `docs/` và push lên GitHub:
+Chỉ cần chỉnh sửa file trong thư mục `docs/` và push lên GitHub: 
 
 ```powershell
 git add docs/
