@@ -10,7 +10,7 @@ Starter theme + plugin core cho WordPress.
 
 ### Bước 1: Database (tự động)
 
-Chạy Docker để tự động tạo MySQL và database:
+Chạy Docker để tự động tạo MySQL và database: 
 ```powershell
 docker compose up -d
 ```
